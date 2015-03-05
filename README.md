@@ -26,5 +26,5 @@ Arguments of mannaggia_nocloud.py
 - -w --wait: wait time in seconds               usage: -w 5             default: 3sec
 - -d --date: specify a specific date            usage: -d "1 jan"       default: False
 - -r --random: picks a random day               usage: -r               default: False
-
+- -f --frequency: specify fm frequency		useage -f 103.0		default: 90.2
 

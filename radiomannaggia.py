@@ -1,10 +1,11 @@
 #! /usr/bin/env python
 import re, random, time, argparse, subprocess, os
 #####var
-freq = "90.2"
+#freq = "90.2"			#fm frequency
+pifm = "pifmplay/./pifmplay"	#location of fm player
 db = "santi_e_beati.txt"	#the santi e beati db
-tts = "pico2wave -w"
-tts_opt = "--lang=it-IT"
+tts = "pico2wave -w"		#tts settings
+tts_opt = "--lang=it-IT"	#tts options
 audiofile = "mannaggia.wav"	#name of the audiofile that will be created
 player = "aplay -q"		#audio player
 months = ["jan","feb","mar","apr","may","jun","jul","ago","sep","oct","nov","dec"]
@@ -16,6 +17,7 @@ parser = argparse.ArgumentParser(description='Mannaggiatore off-the-cloud, idea 
 parser.add_argument('-w','--wait', help='wait time in seconds between one amnnaggia and the other',required=False,default=3)
 parser.add_argument('-d','--date', help='do the mannaggia for a specific date express like "1 jan" or 23 dec"',required=False)
 parser.add_argument('-r','--random', help='random day for santi e beati', action="store_true", default=False, required=False)
+parser.add_argument('-f','--freqency', help='fm frequency', default=freq, required=False)
 args = parser.parse_args()
 #####random selection of month/day and manual selection of the day
 if args.random :
@@ -48,7 +50,7 @@ while True :
         mannaggia_cmd = tts + ' ' + audiofile + ' ' + tts_opt + ' \" ' + mannaggia + '\"'
 	subprocess.call(mannaggia_cmd, shell=True) 		#send command to os
 #	radiomannaggia_cmd = './pifm ' + audiofile + ' ' + freq
-        radiomannaggia_cmd = 'pifmplay/./pifmplay mannaggia.wav 90.2'
+        radiomannaggia_cmd = pifm + ' ' + audiofile.wav + ' ' + args.frequency
 	subprocess.call(radiomannaggia_cmd, shell=True)
 #	os.remove(audiofile)					#
 	time.sleep(args.wait)					#wait for the spcified time
